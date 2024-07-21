@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
   int edad = 19;
   char carrera[] = "Ingeniería de Sistemas";
   int semestre = 4;
-  char universidad[] = "Universidad Javeriana";
+  char universidad[] = "Pontificia Javeriana";
 
   // Imprimir la información del estudiante
   printf("Información del Estudiante\n");
