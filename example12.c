@@ -10,9 +10,9 @@ Tema: Asignación de memoria dinámica
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-  int *varptr1 = malloc(4*sizeof(int));
-  int *varptr2 = malloc(sizeof(int[4]));
-  int *varptr3 = malloc(4*sizeof *varptr3);
+  int *varptr1 = malloc(4*sizeof(int)); // Aignación para un vector entero de size 4
+  int *varptr2 = malloc(sizeof(int[4])); // Aignación para un vector entero de size 4
+  int *varptr3 = malloc(4*sizeof *varptr3); // Aignación para un vector entero de size 4
   
   if(varptr1) {
     for(int i = 0; i < 4; i++) {
