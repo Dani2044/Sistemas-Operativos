@@ -6,7 +6,7 @@ Tema: Entradas y salidas en C
 **************************************************/
 
 #include <stdio.h>
-#include "funciones1.h"
+#include "funciones.h"
 
 int main(int argc, char *argv[]) {  
   //Menú
