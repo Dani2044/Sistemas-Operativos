@@ -10,6 +10,8 @@ Tema: Sistemas operativos, parte 2
 
 int main(){
   int n, i, *ptr, sum = 0;
+
+  // Leer número de elementos
   printf("Enter number of elements: ");
   scanf("%d", &n);
   ptr = (int*) calloc(n, sizeof(int));
@@ -17,11 +19,15 @@ int main(){
     printf("Error! Memory not allocated.\n");
     exit(0);
   }
+
+  // Leer elementos
   printf("Enter elements:\n");
   for(i = 0; i < n; i++){
     scanf("%d", ptr + i);
     sum += *(ptr + i);
   }
+
+  // Imprimir elementos
   printf("Sum = %d\n", sum);
   free(ptr);
   return 0;
