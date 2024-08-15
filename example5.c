@@ -19,7 +19,8 @@ int main(){
   }
   printf("\nEnter the new size: ");
   scanf("%d", &n2);
-  // Rellocating memory
+  
+  // Relocalizar memoria
   ptr = realloc(ptr, n2 * sizeof(int));
   printf("Addresses of newly allocated memory:/n");
   for(i = 0; i < n2; i++) {
