@@ -6,6 +6,7 @@ Tema: Entradas y salidas en C
 **************************************************/
 
 #include <stdio.h>
+// Incluir header
 #include "funciones.h"
 
 int main(int argc, char *argv[]) {  
