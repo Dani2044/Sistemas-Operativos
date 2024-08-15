@@ -19,6 +19,7 @@ int main(){
   printf("From main: %s %s\n", a, b);
 }
 
+// Función que copia dos cadenas de caracteres
 char *function(char *p){
   char q[strlen(p) + 1];
   strcpy(q, p);
