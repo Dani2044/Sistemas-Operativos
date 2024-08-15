@@ -7,7 +7,7 @@ Tema: Entradas y salidas en C
 
 #include <stdio.h>
 // Incluir header
-#include "funciones.h"
+#include "Suma_header.h"
 
 int main(int argc, char *argv[]) {  
   //Menú
