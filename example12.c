@@ -10,15 +10,18 @@ Tema: Asignación de memoria dinámica
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
+  // Variables
   int *varptr1 = malloc(4*sizeof(int)); // Aignación para un vector entero de size 4
   int *varptr2 = malloc(sizeof(int[4])); // Aignación para un vector entero de size 4
   int *varptr3 = malloc(4*sizeof *varptr3); // Aignación para un vector entero de size 4
-  
+
+  // Llenado de arreglo
   if(varptr1) {
     for(int i = 0; i < 4; i++) {
       varptr1[i] = i*i;
     }
-    
+        
+    // Impresión de valores
     for(int i = 0; i < 4; i++) {
       printf("varptr1[%d]\t == %d\n", i, varptr1[i]);
     }
