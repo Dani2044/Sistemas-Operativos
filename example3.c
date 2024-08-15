@@ -10,8 +10,11 @@ Tema: Sistemas operativos, parte 2
 #include <string.h>
 
 int main(){
+  // Direcciones de memoria
   char *p;
   char *q;
+
+  // Impresiones y copiado de valores
   printf("Address of p = %s\n", p);
   strcpy(p, "Hello, I´m the best in Operating Systems!");
   printf("%s\n", p);
