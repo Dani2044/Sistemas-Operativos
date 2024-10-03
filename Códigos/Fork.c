@@ -4,11 +4,7 @@ Fecha:   26/09/2024
 Autor:   Daniel Felipe Castro Moreno
 Materia: Sistemas Operativos
 
-Taller inicial fork
-
-        - Funcionamiento del código
-        - Modularización del código
-        - Creación de fichero de Automatización de Compilación
+Fork inicial
       
 *****************************************************************************/
 
