@@ -6,50 +6,51 @@ Materia: Sistemas Operativos
 
 Laboratorio Fork-Pipe-Name
 
-  - Cliente unidireccional
+  - Cliente unidireccional: Envia mensajes a través de un archivo FIFO.
 
 *****************************************************************************/
 
-// Librerias necesarias
 #include <stdio.h>
-#include <sys/stat.h>
+#include <sys/stat.h> // Para gestionar propiedades de archivos
 #include <sys/types.h>
-#include <fcntl.h>
+#include <fcntl.h> // Para controlar archivos
 #include <unistd.h>
-#include <string.h>
+#include <string.h> // Para manejo de cadenas de caracteres
 
-#define FIFO_FILE "MYFIFO" // Definimos el nombre del archivo FIFO
+#define FIFO_FILE "MYFIFO" // Defición del nombre del archivo FIFO
+
 int main()
 {
-    int fd; // Descriptor de archivo
-    int end_process; // Cierre de proceso
-    int stringlen; // Longitud de la cadena
-    char readbuf[80]; // Buffer de 80 caracteres
-    char end_str[5]; // Almacena la cadena "end" para comparación
-    printf("FIFO_CLIENT: Send messages, infinitely, to end enter \"end\"\n");
+    int fd; // Descriptor para el archivo FIFO
+    int end_process; // Indicador para terminar el proceso
+    int stringlen; // Longitud de la cadena de entrada
+    char readbuf[80]; // Buffer de 80 caracteres para lectura de la entrada
+    char end_str[5]; // Cadena "end" para finalizar
 
-    fd = open(FIFO_FILE, O_CREAT|O_WRONLY);
+    printf("FIFO_CLIENT: Enviar mensajes de forma infinita, para terminar escriba \"end\"\n");
 
-    strcpy(end_str, "end");
+    fd = open(FIFO_FILE, O_CREAT | O_WRONLY); // Abre el archivo FIFO en modo escritura
+
+    strcpy(end_str, "end"); // Inicializa la cadena de terminación
 
     // Ciclo infinito para enviar mensajes
     while (1) {
-        printf("Enter string: ");
-        fgets(readbuf, sizeof(readbuf), stdin);
-        stringlen = strlen(readbuf);
-        readbuf[stringlen - 1] = '\0';
+        printf("Ingrese un mensaje: ");
+        fgets(readbuf, sizeof(readbuf), stdin); // Lee la entrada del usuario
+        stringlen = strlen(readbuf); // Calcula la longitud de la cadena
+        readbuf[stringlen - 1] = '\0'; // Ingresa el caracter de final
 
-        end_process = strcmp(readbuf, end_str); 
+        end_process = strcmp(readbuf, end_str); // Compara la entrada con "end"
 
-        if (end_process != 0) {
-            write(fd, readbuf, strlen(readbuf));
-            printf("Sent string: \"%s\" and string length is %d\n", readbuf, (int)    strlen(readbuf));
+        if (end_process != 0) { // Si no es "end"
+            write(fd, readbuf, strlen(readbuf)); // Escribe el mensaje en el FIFO
+            printf("Mensaje enviado: \"%s\", longitud: %d\n", readbuf, (int) strlen(readbuf));
         } else {
-            write(fd, readbuf, strlen(readbuf));
-            printf("Sent string: \"%s\" and string length is %d\n", readbuf, (int)    strlen(readbuf));
-            close(fd);
-            break;
+            write(fd, readbuf, strlen(readbuf)); // Envía el mensaje de cierre
+            printf("Mensaje enviado: \"%s\", longitud: %d\n", readbuf, (int) strlen(readbuf));
+            close(fd); // Cierra el descriptor del archivo FIFO
+            break; // Sale del ciclo
         }
     }
-    return 0;
+    return 0; // Finaliza el programa
 }
