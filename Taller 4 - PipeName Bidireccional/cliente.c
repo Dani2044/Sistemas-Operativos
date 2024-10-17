@@ -3,6 +3,10 @@ Fecha: 18/10/2024
 Autores: Daniel Castro, María Paula Rodríguez, Eliana Cepeda, Daniel Gómez
 Materia: Sistemas Operativos
 Tema: Taller 4 - PipeName Bidireccional
+
+Descripción:
+        Este programa permite la comunicación bidireccional de un cliente a un servidor usando 
+        NamePipes y un archivo FiFO.
 ************************************************************************************************
         CLIENTE
 ************************************************************************************************/
