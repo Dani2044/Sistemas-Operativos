@@ -1,6 +1,6 @@
 # Makefile para compilar el programa del Tercer Taller de Sistemas Operativos
 # Fecha: 18/10/2024
-# Autores: Daniel Castro, María Paula Rodríguez, Eliana Cepeda, Daniel Gómez
+# Autores: Daniel Castro, María Paula Rodríguez, Eliana Cepeda, Daniel Gonzalez
 # Materia: Sistemas Operativos
 # Tema: Tercer Taller - fork()
 
@@ -10,9 +10,9 @@ TARGET = ejecutable
 OBJ = taller3.o funcs.o
 
 # Archivos de entrada y sus tamaños
-N1 = 30
+N1 = 29
 ARCHIVO1 = archivo00.txt
-N2 = 20
+N2 = 21
 ARCHIVO2 = archivo01.txt
 
 all: $(TARGET) run

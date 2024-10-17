@@ -1,6 +1,6 @@
 /************************************************************************************************
 Fecha: 18/10/2024
-Autores: Daniel Castro, María Paula Rodríguez, Eliana Cepeda, Daniel Gómez
+Autores: Daniel Castro, María Paula Rodríguez, Eliana Cepeda, Daniel Gonzalez
 Materia: Sistemas Operativos
 Tema: Tercer Taller - fork()
 
