@@ -8,6 +8,7 @@ Descripción:
         Programa que simula la sincronización entre un productor y un consumidor utilizando 
         hilos y variables de condición para gestionar un contador de productos.
 ************************************************************************************************/
+
 #include <stdio.h> // Para estándar de entrada/salida
 #include <stdlib.h> // Para uso de funciones como rand()
 #include <pthread.h> // Para manejo de hilos y sincronización
