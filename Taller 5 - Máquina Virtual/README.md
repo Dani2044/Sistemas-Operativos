@@ -1,7 +1,6 @@
 # Taller 5 - Máquina virtual
 **Fecha:** 24/10/2024  
-**Autor:**  
-&nbsp;&nbsp;&nbsp;&nbsp;Daniel Castro  
+**Autor:** Daniel Castro  
 
 ## Descripción General
 
@@ -20,8 +19,9 @@ El sistema de comunicación bidireccional utiliza un archivo FIFO para que el cl
 ```bash
 gcc -o cliente cliente.c
 gcc -o servidor servidor.c
-./servidor &
+./servidor
 ./cliente
+```
 
 ## Segunda Parte: Productor-Consumidor con Hilos
 
@@ -35,3 +35,4 @@ Se simula un sistema donde múltiples productores incrementan un contador hasta 
 ```bash
 gcc -pthread -o prod_cons_posix prod_cons_posix.c
 ./prod_cons_posix
+```
