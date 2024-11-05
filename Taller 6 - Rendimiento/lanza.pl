@@ -14,8 +14,8 @@
 $Path = `pwd`;
 chomp($Path);
 
-# Nombre del ejecutable que se va a ejecutar
-$Nombre_Ejecutable = "MM_ejecutable";
+# Nombres de los ejecutables que se van a ejecutar
+@Nombres_Ejecutables = ("mm_clasico", "mm_transpuesta");
 
 # Tamaños de las matrices a evaluar
 @Size_Matriz = (100, 200, 300, 500, 1000, 2000);
@@ -30,15 +30,18 @@ $Repeticiones = 30;
 foreach $size (@Size_Matriz) {
     # Bucle que itera sobre el número de hilos
     foreach $hilo (@Num_Hilos) {
-        # Nombre del archivo donde se almacenarán los resultados
-        $file = "$Path/$Nombre_Ejecutable-".$size."-Hilos-".$hilo.".dat";
+        # Bucle que itera sobre los ejecutables
+        foreach $ejecutable (@Nombres_Ejecutables) {
+            # Nombre del archivo donde se almacenarán los resultados
+            $file = "$Path/$ejecutable-".$size."-Hilos-".$hilo.".dat";
 
-        # Bucle para repetir la ejecución del programa
-        for ($i = 0; $i < $Repeticiones; $i++) {
-            # Ejecuta el programa y redirige la salida al archivo correspondiente
-            system("$Path/$Nombre_Ejecutable $size $hilo >> $file");
+            # Bucle para repetir la ejecución del programa
+            for ($i = 0; $i < $Repeticiones; $i++) {
+                # Ejecuta el programa y redirige la salida al archivo correspondiente
+                system("$Path/$ejecutable $size $hilo >> $file");
+            }
+            # Cierra el archivo
+            # No se necesita cerrar el archivo manualmente ya que se usa 'system' para redirigir.
         }
-        # Cierra el archivo
-        # No se necesita cerrar el archivo manualmente ya que se usa 'system' para redirigir.
     }
 }
