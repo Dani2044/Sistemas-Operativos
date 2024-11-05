@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#/************************************************************************************************
+#************************************************************************************************
 #Fecha: 31/10/2024
 #Autor: Daniel Castro
 #Materia: Sistemas Operativos
@@ -18,13 +18,13 @@ chomp($Path);
 $Nombre_Ejecutable = "MM_ejecutable";
 
 # Tamaños de las matrices a evaluar
-@Size_Matriz = ("200","300");
+@Size_Matriz = (100, 200, 300, 500, 1000, 2000);
 
 # Número de hilos a utilizar en la ejecución
-@Num_Hilos = (1,2);
+@Num_Hilos = (1, 2, 4, 8, 16);
 
 # Número de repeticiones para cada combinación de tamaño de matriz y número de hilos
-$Repeticiones = 2;
+$Repeticiones = 30;
 
 # Bucle que itera sobre cada tamaño de matriz
 foreach $size (@Size_Matriz) {
@@ -34,13 +34,11 @@ foreach $size (@Size_Matriz) {
         $file = "$Path/$Nombre_Ejecutable-".$size."-Hilos-".$hilo.".dat";
 
         # Bucle para repetir la ejecución del programa
-        for ($i=0; $i<$Repeticiones; $i++) {
+        for ($i = 0; $i < $Repeticiones; $i++) {
             # Ejecuta el programa y redirige la salida al archivo correspondiente
-            printf("$Path/$Nombre_Ejecutable $size $hilo \n");
+            system("$Path/$Nombre_Ejecutable $size $hilo >> $file");
         }
         # Cierra el archivo
-        close($file);
-        # Incrementa el contador
-        $p=$p+1;
+        # No se necesita cerrar el archivo manualmente ya que se usa 'system' para redirigir.
     }
 }
