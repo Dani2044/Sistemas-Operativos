@@ -10,38 +10,71 @@
 #    multiplicación de matrices distribuyendo el trabajo en múltiples hilos
 #************************************************************************************************/
 
-# Obtiene la ruta del directorio de trabajo actual y elimina el salto de línea
-$Path = `pwd`;
+use strict;
+use warnings;
+
+# Ruta del directorio de trabajo actual
+my $Path = `pwd`;
 chomp($Path);
 
 # Nombres de los ejecutables que se van a ejecutar
-@Nombres_Ejecutables = ("mm_clasico", "mm_transpuesta");
+my @Nombres_Ejecutables = ("mm_clasico", "mm_transpuesta");
 
 # Tamaños de las matrices a evaluar
-@Size_Matriz = (100, 200, 300, 500, 1000);
+my @Size_Matriz = (100, 200, 300, 500, 1000);
 
 # Número de hilos a utilizar en la ejecución
-@Num_Hilos = (1, 2, 4, 8, 16);
+my @Num_Hilos = (1, 2, 4, 8, 16);
 
 # Número de repeticiones para cada combinación de tamaño de matriz y número de hilos
-$Repeticiones = 30;
+my $Repeticiones = 30;
 
-# Bucle que itera sobre cada tamaño de matriz
-foreach $size (@Size_Matriz) {
-    # Bucle que itera sobre el número de hilos
-    foreach $hilo (@Num_Hilos) {
-        # Bucle que itera sobre los ejecutables
-        foreach $ejecutable (@Nombres_Ejecutables) {
-            # Nombre del archivo donde se almacenarán los resultados
-            $file = "$Path/$ejecutable-".$size."-Hilos-".$hilo.".dat";
+# Nombre del archivo de salida
+my $output_file = "$Path/resultados_promedio.dat";
 
-            # Bucle para repetir la ejecución del programa
-            for ($i = 0; $i < $Repeticiones; $i++) {
-                # Ejecuta el programa y redirige la salida al archivo correspondiente
-                system("$Path/$ejecutable $size $hilo >> $file");
+# Abre el archivo de salida para escribir los resultados
+open(my $out_fh, '>', $output_file) or die "No se pudo abrir el archivo $output_file: $!";
+
+# Escribe el encabezado de la tabla en el archivo de salida
+print $out_fh "\t\tMáquina x\n";
+print $out_fh "\tmm_clasico\t\t\t\t\tmm_transpuesta\n";
+print $out_fh "\t1\t2\t4\t8\t16\t1\t2\t4\t8\t16\n";
+
+# Itera sobre cada tamaño de matriz
+foreach my $size (@Size_Matriz) {
+    print $out_fh "$size\t";  # Escribe el tamaño de la matriz en la primera columna
+
+    # Itera sobre cada ejecutable
+    foreach my $ejecutable (@Nombres_Ejecutables) {
+        # Itera sobre el número de hilos
+        foreach my $hilo (@Num_Hilos) {
+            my $total_time = 0;
+
+            # Ejecuta el programa repetidamente y acumula los tiempos
+            for (my $i = 0; $i < $Repeticiones; $i++) {
+                my $output = `$Path/$ejecutable $size $hilo`;
+                
+                # Si el programa genera la salida en milisegundos (ejemplo), obtenla del output
+                # Verifica si el valor de tiempo está en la salida (asumimos un solo valor de tiempo en ms)
+                if ($output =~ /(\d+(\.\d+)?)/) {
+                    $total_time += $1;
+                } else {
+                    die "No se encontró un valor de tiempo en la salida de $ejecutable con tamaño $size y $hilo hilos.";
+                }
             }
-            # Cierra el archivo
-            # No se necesita cerrar el archivo manualmente ya que se usa 'system' para redirigir.
+            
+            # Calcula el promedio de tiempo de ejecución
+            my $average_time = $total_time / $Repeticiones;
+            
+            # Escribe el promedio en el archivo
+            printf $out_fh "%.2f\t", $average_time;
         }
     }
+    
+    # Nueva línea después de cada fila de tamaño de matriz
+    print $out_fh "\n";
 }
+
+# Cierra el archivo de salida
+close($out_fh);
+print "Resultados promedios guardados en $output_file\n";
