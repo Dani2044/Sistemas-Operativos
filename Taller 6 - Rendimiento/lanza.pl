@@ -18,7 +18,7 @@ chomp($Path);
 @Nombres_Ejecutables = ("mm_clasico", "mm_transpuesta");
 
 # Tamaños de las matrices a evaluar
-@Size_Matriz = (100, 200, 300, 500, 1000, 2000);
+@Size_Matriz = (100, 200, 300, 500, 1000);
 
 # Número de hilos a utilizar en la ejecución
 @Num_Hilos = (1, 2, 4, 8, 16);
