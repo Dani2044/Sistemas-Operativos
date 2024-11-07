@@ -6,10 +6,13 @@ Tema: Evaluación parcial
 Descripción:
 	Este fichero implementa la función secundaria que realiza la cuenta e impresión del 0 y
     último valor del ciclo.
+Modo de ejecución:
+    $gcc -o programa main.c hilos.c
+    $./programa
 ************************************************************************************************
             FUNCIÓN SECUNDARIA
 ************************************************************************************************/
-
+/* Inclusión de librerías */
 #include "hilos.h"
 #include <stdio.h>
 #include <pthread.h>
@@ -25,9 +28,9 @@ void *funcion(void *job) {
 
     size_t IDh = *(size_t *)job; // Convierte el valor recibido a size_t y lo desreferencia
     int cont = 5; // Crea un contador
-    printf("\nHilo %zu ha iniciado\n", IDh); // Imprime su inicio
+    printf("\nHilo %zu ha iniciado\n\n", IDh); // Imprime su inicio
 
-    for (int i = 0; i < 299; i++) { // Realiza la cuenta de 300 enteros 
+    for (int i = 0; i < 300; i++) { // Realiza la cuenta de 300 enteros 
         if (i == 0 || i == 299) { // Imprime el 0 o último valor del bucle
             printf("\nValor: %d", i);
         }

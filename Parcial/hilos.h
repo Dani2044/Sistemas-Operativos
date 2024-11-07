@@ -5,8 +5,11 @@ Materia: Sistemas Operativos
 Tema: Evaluación parcial
 Descripción:
 	Este fichero define la plantilla de las funciones a implementar.
+Modo de ejecución:
+    $gcc -o programa main.c hilos.c
+    $./programa
 ************************************************************************************************
             PLANTILLA  
 ************************************************************************************************/
-/* Función que ejecutarán los hilos */
+/* Prototipo de la función que ejecutarán los hilos */
 void *funcion(void *job);

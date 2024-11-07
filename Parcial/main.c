@@ -7,6 +7,9 @@ Descripción:
 	Este fichero crea 5 hilos, los cuales ejecutan una función que realiza la cuenta de 300
     enteros e imprime el 0 y último valor. Además, imprime en orden "Hilo ID iniciado" e
     "Hilo ID finalizado".
+Modo de ejecución:
+    $gcc -o programa main.c hilos.c
+    $./programa
 ************************************************************************************************
             FUNCIÓN PRINCIPAL
 ************************************************************************************************/
@@ -22,8 +25,8 @@ pthread_mutex_t BLOQUEO; // Definición del mutex
 int main() {
     size_t jobs[5]; // Crea 5 jobs
     pthread_t hilos[5]; // Crea 5 hilos
-    int i = 0;
-    int error;
+    int i = 0; // Crea entero
+    int error; // Crea entero que recibirá 0 si la creación de un hilo es exitosa o un código de error
 
     if (pthread_mutex_init(&BLOQUEO, NULL) != 0) { // Inicializa el mutex y verifica error
         printf("\nFallo de inicialización de MUTEX\n");
@@ -43,6 +46,8 @@ int main() {
     pthread_join(hilos[0], NULL);
     pthread_join(hilos[1], NULL);
     pthread_join(hilos[2], NULL);
+    pthread_join(hilos[3], NULL);
+    pthread_join(hilos[4], NULL);
 
     // Destruye el mutex
     pthread_mutex_destroy(&BLOQUEO);
