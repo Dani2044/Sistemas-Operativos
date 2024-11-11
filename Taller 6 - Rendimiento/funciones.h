@@ -2,7 +2,9 @@
 ****************************               Header Funciones              ************************
 ************************************************************************************************
 Fecha: 31/10/2024
-Autor: Daniel Castro
+Autor: Daniel Castro - Eliana Cepeda - Maria Paula Rodriguez - Daniel Gonzalez
+Materia: Sistemas Operativos
+Tema: Taller 6 - Evaluación de rendimiento
 Descripción:
     Declaración de funciones y estructura de parámetros empleada en el programa principal.
 ************************************************************************************************/

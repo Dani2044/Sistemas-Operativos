@@ -2,7 +2,9 @@
 ****************************          Funciones Auxiliares          ****************************
 ************************************************************************************************
 Fecha: 31/10/2024
-Autor: Daniel Castro
+Autor: Daniel Castro - Eliana Cepeda - Maria Paula Rodriguez - Daniel Gonzalez
+Materia: Sistemas Operativos
+Tema: Taller 6 - Evaluación de rendimiento
 Descripción:
     Este archivo contiene las funciones de soporte para la ejecución del programa, incluyendo 
     la inicialización de matrices y la impresión de matrices pequeñas para depuración. 
